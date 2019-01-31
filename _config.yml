@@ -84,7 +84,6 @@ deploy:
   branch: master
   message: 发布，更新时间为：{{ now('YYYY-MM-DD HH:mm:ss') }}
 
-
 # 插件
 # 代码压缩 github.com/chenzhutian/hexo-all-minifier
 all_minifier: true

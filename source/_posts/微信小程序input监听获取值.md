@@ -47,6 +47,9 @@ toc: true
 date: 2019-01-29 16:52:48
 ---
 
+> 给input绑定一个方法，根据input上的字段设置，自动写入`this.data`
+
+<!-- more -->
 # 原理
 给dom设置属性，
 `data-model`：这是

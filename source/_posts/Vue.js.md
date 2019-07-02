@@ -15,6 +15,8 @@ date: 2019-01-29 16:47:52
 
 使用element-ui的dialog，封装为一个登录面板组件，在`Navbar.vue`组件中调用，当点击`Navbar`中的`登录`按钮时，弹出登录面板，点击面板中的`取消`按钮，或者点击背景、点击自带关闭按钮时，关闭登录面板。
 
+<!-- more -->
+
 但直接调用`props`内的属性作为`visible.sync`的值，不管如何在点击自带关闭按钮或背景关闭时，就会报错：
 
 ::: danger Console错误提示
@@ -24,6 +26,8 @@ date: 2019-01-29 16:47:52
 先上一篇我查到的类似错误的文章：[https://www.cnblogs.com/yeqrblog/p/9141701.html](https://www.cnblogs.com/yeqrblog/p/9141701.html)
 
 **先感谢大佬！**
+
+<!-- more -->
 
 和大佬第二个方法有点区别，我用到了`watch`，现在我的做法是：
 1. 用子组件自定义一个data作为`visible.sync`值，并监听`props`的值

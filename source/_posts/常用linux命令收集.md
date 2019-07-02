@@ -17,6 +17,10 @@ toc: true
 date: 2018-11-13 17:38:49
 ---
 
+> 自己常用的linux命令记录
+
+<!-- more -->
+
 # ssh拷贝文件
 ```
 scp -r username@ip:/path /localPath

@@ -16,6 +16,9 @@ toc: true
 date: 2018-12-25 12:22:49
 ---
 
+> 在`nuxt.js`下使用`@nuxtjs/axios`自定义拦截器
+
+<!-- more -->
 
 # @nuxtjs/axios使用
 ## 说明

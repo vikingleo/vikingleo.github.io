@@ -5,7 +5,7 @@
   <span class="with-love">
     <i class="fa fa-{{ theme.footer.icon }}"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright || config.author }}</span>
+  <a href="http://www.beian.miit.gov.cn/" target="_blank" class="author" itemprop="copyrightHolder">{{ theme.footer.copyright || config.author }}</a>
 
   {% if theme.post_wordcount.totalcount %}
     <span class="post-meta-divider">|</span>

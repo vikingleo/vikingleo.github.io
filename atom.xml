@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://vikingleo.github.io</id>
+    <title>笑望云舒</title>
+    <updated>2021-01-06T08:29:21.165Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://vikingleo.github.io"/>
+    <link rel="self" href="https://vikingleo.github.io/atom.xml"/>
+    <logo>https://vikingleo.github.io/images/avatar.png</logo>
+    <icon>https://vikingleo.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2021, 笑望云舒</rights>
+</feed>

@@ -1,0 +1,94 @@
+{
+  "posts": [
+    {
+      "content": "> 该项目为uniapp衍生组件库",
+      "data": {
+        "title": "ju-components-uni",
+        "date": "2021-01-06 16:38:17",
+        "tags": [],
+        "published": true,
+        "hideInList": false,
+        "feature": null,
+        "isTop": false
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "ju-components-uni"
+    },
+    {
+      "content": "## 简介\n\n多图上传组件，实现：\n\n1. 按行均分显示\n2. 多图片上传\n3. 选择模式和多选模式\n\n## 适用端\n\n\n| 端         | 支持 |\n| ---------- | ---- |\n| Web        | √    |\n| 微信小程序 | √    |\n\n## 依赖\n\n1. 微信公众号网页开发请自行引入`js-sdk`，并注入`Vue.prototype.$wx`，名称可自定，但要改动组件内调用的`$wx`\n2. `/static` 自带的iconfont，也可以自行替换\n\n## 调用\n\n```js\nimport ImageUpload from '@/components/ju-image-upload/ju-image-upload.vue'\nexport default{\n\tcomponents:{\n\t\tImageUpload\n\t}\n}\n```\n\n```html\n<image-upload \n    :src=\"src\" \n    count=\"2\" \n    text=\"点击就上传\" \n    @select=\"onTest\" \n    @cancel-select=\"onTest\" \n    @choose=\"onTest\" \n    @remove=\"onTest\" \n    @preview=\"onTest\"\n    @control=\"onTest\" \n    @cancel-control=\"onTest\" />\n```\n\n## 属性\n<!-- more -->\n\n\n| 属性            | 类型                    | 必填 | 默认          | 可选     | 说明                                                                                       |\n| --------------- | ----------------------- | ---- | ------------- | -------- | ------------------------------------------------------------------------------------------ |\n| type            | String                  | -    | -             | 'select' | 图片列表的类型                                                                             |\n| selectMore      | Boolean                 | -    | false         | -        | 是否可多选，type=\"select\"时生效                                                            |\n| src             | String/Array            | -    | -             | -        | 图片列表，可作为默认图片显示                                                               |\n| rowCount        | String/Number           | -    | 0             | -        | 每列显示个数（加上添加按钮），如果设置大于0，则全部变成正方形，设置的`height`和`width`无效 |\n| gutter          | String(Number) / Number | -    | 10            | -        | 两个图片框之间的间距                                                                       |\n| width           | String                  | -    | 200rpx        | -        | 宽度，受`rowCount`影响                                                                     |\n| height          | String                  | -    | 200rpx        | -        | 高度，受`rowCount`影响                                                                     |\n| icon            | String                  | -    | -             | -        | 自定义添加按钮的icon，填写完整icon，例如 `icon=\"app-icon icon-home\"`，也可以加额外的class  |\n| text            | String                  | -    | -             | -        | 添加按钮的文本，默认只有图标                                                               |\n| backgroundColor | String                  | -    | '#ffffff'     | 颜色值   | 添加按钮的背景色                                                                           |\n| mode            | String                  | -    | 'scaleToFill' | -        | 和uni提供的`image`的`mode`匹配                                                             |\n| param           | Object                  | -    | null          | -        | 额外参数，每个操作回调都会返回，例如form中，指明field是哪个：:param=\"{field:'idCard'}\"}    |\n| count           | String / Number         | 1    | -             | 1-9      | 选择图片总数,所选图片到达数量，隐藏添加按钮                                                |\n| chooseCount     | String\\|Number          | -    | 9             | 1-9      | 单次选择图片数量                                                                           |\n| color           | String                  | -    | #ccc          | 颜色值   | 添加按钮的字体颜色                                                                         |\n| upload          | Boolean                 | -    | false         | -        | 自动上传到服务器，需要根据实际业务修改                                                     |\n| uploadUrl       | String                  | -    | -             | -        | 已包含我自己到上传地址，需要根据实际业务修改                                               |\n\n## 事件\n\n> 所有方法会返回Object，其中包含数据的字段。\n\n### 可能返回值\n\n| 名称    | 数据类型 | 说明                                                      |\n| ------- | -------- | --------------------------------------------------------- |\n| param   | Object   | 所有方法都返回。回传页面传过来的param字段，用于方法后操作 |\n| urls    | Array    | 所有方法都返回。当前所有的图片路径                        |\n| files   | Array    | 当前选择的本地图片、serverId、localIds、tempFilePaths     |\n| current | String   | 当前图片地址                                              |\n| index   | Number   | 当前图片在urls中都索引                                    |\n\n### 方法说明\n\n| 名称           | 返回字段（包含默认返回）        | 说明                                                                       |\n| -------------- | ------------------------------- | -------------------------------------------------------------------------- |\n| choose         | `files`                         | 选择图片后，如果用微信公众号的js-sdk，则此事件将会在`wx.uploadImage`后执行 |\n| upload         | `current_upload`                | 开启自动上传时，图片上传后事件                                             |\n| control        | `current`                       | 点击单张图片弹出操作面板后的事件                                           |\n| cancel-control | `current`、 `index`             | 取消操作面板后                                                             |\n| preview        | `current`、 `index`             | 预览打开后                                                                 |\n| remove         | `current`、 `index`             | 删除单张图片后                                                             |\n| select         | `current`、 `index`、`selected` | 选择单张图片后                                                             |\n| cancel-select  | `current`、 `index`、`selected` | 取消选择后                                                                 |\n\n## slot\n\n默认slot\n\n**注意：** 设置slot时，属性`icon`和`text`无效\n\n```html\n<image-upload icon=\"app-icon icon-home\" text=\"点我上传\">\n    <!--这里带了slot，如果在此设置，则属性上的icon和text无效-->\n    <view >slot示例</view>\n</image-upload>\n```\n\n## 结尾\n\n工作中顺带捋出来的组件，可能有些许bug，多多包涵。\n\n## TODO\n\n1. 图片多选\n2. 选择后先展示，后上传，改动`upload`：`before` , `after` , `null`",
+      "data": {
+        "title": "ju-image-upload",
+        "date": "2021-01-06 16:32:23",
+        "tags": [
+          "uniapp",
+          "uni-ju"
+        ],
+        "published": true,
+        "hideInList": false,
+        "feature": null,
+        "isTop": false
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "## 简介\n\n多图上传组件，实现：\n\n1. 按行均分显示\n2. 多图片上传\n3. 选择模式和多选模式\n\n## 适用端\n\n\n| 端         | 支持 |\n| ---------- | ---- |\n| Web        | √    |\n| 微信小程序 | √    |\n\n## 依赖\n\n1. 微信公众号网页开发请自行引入`js-sdk`，并注入`Vue.prototype.$wx`，名称可自定，但要改动组件内调用的`$wx`\n2. `/static` 自带的iconfont，也可以自行替换\n\n## 调用\n\n```js\nimport ImageUpload from '@/components/ju-image-upload/ju-image-upload.vue'\nexport default{\n\tcomponents:{\n\t\tImageUpload\n\t}\n}\n```\n\n```html\n<image-upload \n    :src=\"src\" \n    count=\"2\" \n    text=\"点击就上传\" \n    @select=\"onTest\" \n    @cancel-select=\"onTest\" \n    @choose=\"onTest\" \n    @remove=\"onTest\" \n    @preview=\"onTest\"\n    @control=\"onTest\" \n    @cancel-control=\"onTest\" />\n```\n\n## 属性",
+      "fileName": "ju-image-upload"
+    },
+    {
+      "content": "> 本站使用*Gridea*搭建，静态博客好工具，安利一波！\n",
+      "data": {
+        "title": "关于",
+        "date": "2019-01-25 19:09:48",
+        "tags": [],
+        "published": true,
+        "hideInList": true,
+        "feature": null,
+        "isTop": false
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "about"
+    }
+  ],
+  "tags": [
+    {
+      "name": "uniapp",
+      "slug": "vI7JVeF7_",
+      "used": true
+    },
+    {
+      "name": "uni-ju",
+      "slug": "fDZDCaPz9u",
+      "used": true
+    }
+  ],
+  "menus": [
+    {
+      "link": "/",
+      "name": "首页",
+      "openType": "Internal"
+    },
+    {
+      "link": "https://vikingleo.github.io/ju-components-uni",
+      "name": "uniapp组件",
+      "openType": "Internal"
+    },
+    {
+      "link": "/archives",
+      "name": "归档",
+      "openType": "Internal"
+    },
+    {
+      "link": "/tags",
+      "name": "标签",
+      "openType": "Internal"
+    },
+    {
+      "link": "/post/about",
+      "name": "关于",
+      "openType": "Internal"
+    }
+  ]
+}

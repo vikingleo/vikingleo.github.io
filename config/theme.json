@@ -1,0 +1,31 @@
+{
+  "config": {
+    "archivesPageSize": 50,
+    "archivesPath": "archives",
+    "dateFormat": "YYYY-MM-DD",
+    "feedCount": 10,
+    "feedFullText": true,
+    "footerInfo": "Powered by <a href=\"https://github.com/getgridea/gridea\" target=\"_blank\">Gridea</a>",
+    "postPageSize": 10,
+    "postPath": "",
+    "postUrlFormat": "SLUG",
+    "showFeatureImage": true,
+    "siteDescription": "",
+    "siteName": "笑望云舒",
+    "tagPath": "",
+    "tagUrlFormat": "SLUG",
+    "themeName": "fly"
+  },
+  "customConfig": {
+    "contentMaxWidth": "60%",
+    "customCss": "",
+    "facebook": "",
+    "ga": "",
+    "github": "",
+    "skin": "white",
+    "textSize": ".9rem",
+    "twitter": "",
+    "weibo": "",
+    "zhihu": ""
+  }
+}

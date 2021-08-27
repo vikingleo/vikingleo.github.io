@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>uni-ju | 笑望云舒</title>
+<title>前端js工具函数 | 笑望云舒</title>
 <meta name="description" content="">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -84,107 +84,60 @@
 
 
       <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">前端js工具函数</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-01-06</span>
+            
+          </div>
+          <div class="post-content">
+            <h2 id="小程序-uniapp的picker多列数据源处理">小程序、uniapp的picker多列数据源处理</h2>
+<pre><code class="language-javascript">/**
+ * 返回处理后的picker数据源
+ * @param sourceData    {Array} 原始无限级数据
+ * @param renderArray   {Array} 产生的数据，如果有，如果没有，第一元素就是sourceData
+ * @param indexValue    {Array} 当前值，格式：[0,0,0]，其中元素为对应列已选项目的索引
+ * @param childrenFiled {String} 源数据用于存放子项的字段名，
+ * @returns {Promise&lt;unknown&gt;} false 或者 Array
+ */
+const districtRangeData = (sourceData, renderArray, indexValue, childrenFiled) =&gt; {
+	return new Promise(resolve =&gt; {
 
-        <div class="current-tag-container">
-          <h2 class="title">
-            <i class="icon icon-pricetags-outline"></i> uni-ju
-          </h2> 
+		if (!sourceData || !sourceData.length) {
+			resolve(false)
+		}
+		if (!renderArray || renderArray.length) {
+			renderArray = [sourceData]
+		}
+		for (let i in indexValue) {
+			if (+i &gt; 0) {
+				let item = renderArray[i - 1][indexValue[+i - 1]][childrenFiled]
+				renderArray.splice(+i, 1, item)
+			}
+			if (+i === indexValue.length - 1) {
+				resolve(renderArray)
+			}
+		}
+	})
+}
+</code></pre>
+
+          </div>
         </div>
 
         
-<section class="post-item">
-    <div class="content">
-      <a href="https://vikingleo.github.io/ju-image-upload/">
-        <h2 class="post-title">ju-image-upload</h2>
-      </a>
-      <div class="post-abstract">
-        <h2 id="简介">简介</h2>
-<p>多图上传组件，实现：</p>
-<ol>
-<li>按行均分显示</li>
-<li>多图片上传</li>
-<li>选择模式和多选模式</li>
-</ol>
-<h2 id="适用端">适用端</h2>
-<table>
-<thead>
-<tr>
-<th>端</th>
-<th>支持</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Web</td>
-<td>√</td>
-</tr>
-<tr>
-<td>微信小程序</td>
-<td>√</td>
-</tr>
-</tbody>
-</table>
-<h2 id="依赖">依赖</h2>
-<ol>
-<li>微信公众号网页开发请自行引入<code>js-sdk</code>，并注入<code>Vue.prototype.$wx</code>，名称可自定，但要改动组件内调用的<code>$wx</code></li>
-<li><code>/static</code> 自带的iconfont，也可以自行替换</li>
-</ol>
-<h2 id="调用">调用</h2>
-<pre><code class="language-js">import ImageUpload from '@/components/ju-image-upload/ju-image-upload.vue'
-export default{
-	components:{
-		ImageUpload
-	}
-}
-</code></pre>
-<pre><code class="language-html">&lt;image-upload 
-    :src=&quot;src&quot; 
-    count=&quot;2&quot; 
-    text=&quot;点击就上传&quot; 
-    @select=&quot;onTest&quot; 
-    @cancel-select=&quot;onTest&quot; 
-    @choose=&quot;onTest&quot; 
-    @remove=&quot;onTest&quot; 
-    @preview=&quot;onTest&quot;
-    @control=&quot;onTest&quot; 
-    @cancel-control=&quot;onTest&quot; /&gt;
-</code></pre>
-<h2 id="属性">属性</h2>
-
+          <div class="next-post">
+            <a class="purple-link" href="https://vikingleo.github.io/ju-components-uni/">
+              <h3 class="post-title">
+                下一篇：ju-components-uni
+              </h3>
+            </a>
+          </div>
+          
       </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2021-01-06</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://vikingleo.github.io/vI7JVeF7_/">
-                uniapp
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://vikingleo.github.io/fDZDCaPz9u/">
-                uni-ju
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
 
-
-<div class="pagination-container">
-  
-  
-</div>
-
-
-      </div>
+      
 
       <div class="site-footer">
   <div class="slogan"></div>
